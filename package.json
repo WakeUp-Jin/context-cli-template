@@ -1,11 +1,10 @@
 {
-  "name": "context-cli",
-  "version": "1.0.0",
-  "description": "CLI tool to scaffold context-template-cli projects",
+  "name": "create-context-template",
+  "version": "1.0.1",
+  "description": "CLI tool to scaffold LLM projects with context engineering architecture",
   "type": "module",
   "bin": {
-    "context-cli": "./dist/index.js",
-    "create-context-app": "./dist/index.js"
+    "create-context-template": "./dist/index.js"
   },
   "files": [
     "bin",
@@ -41,10 +40,10 @@
     "context",
     "template"
   ],
-  "author": "",
+  "author": "WakeUp-Jin",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/yourusername/context-cli.git"
+    "url": "https://github.com/WakeUp-Jin/context-cli-template"
   }
 }
