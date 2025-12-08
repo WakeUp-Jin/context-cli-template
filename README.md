@@ -6,6 +6,8 @@
 [![npm downloads](https://img.shields.io/npm/dm/create-context-template.svg)](https://www.npmjs.com/package/create-context-template)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
+> 📚 **相关资源**:[上下文工程实践指南](https://github.com/WakeUp-Jin/Practical-Guide-to-Context-Engineering) -深入学习上下文工程的设计理念和最佳实践
+
 ## ✨ 特性
 
 - 🚀 **快速启动** - 一分钟内创建完整的 LLM 应用项目
@@ -140,6 +142,7 @@ my-ai-app/
 - 🔮 可扩展其他提供商（OpenAI、Anthropic 等）
 
 **核心方法:**
+
 - `complete(messages, tools)` - 完整的 LLM 调用，支持工具
 - `simpleChat(userMessage, systemPrompt)` - 简单对话
 - `generate(prompt)` - 生成式调用
@@ -148,24 +151,26 @@ my-ai-app/
 
 基于**上下文工程**理念的 6 种上下文类型：
 
-| 上下文类型 | 说明 | 用途 |
-|----------|------|------|
-| **ConversationContext** | 会话历史记录 | 维护对话连续性 |
+| 上下文类型                     | 说明         | 用途             |
+| ------------------------------ | ------------ | ---------------- |
+| **ConversationContext**        | 会话历史记录 | 维护对话连续性   |
 | **ToolMessageSequenceContext** | 工具调用序列 | 追踪工具使用历史 |
-| **MemoryContext** | 用户记忆 | 长期记忆存储 |
-| **SystemPromptContext** | 系统提示词 | 定义 AI 行为 |
-| **StructuredOutputContext** | 结构化输出 | JSON 格式化输出 |
-| **RelevantContext** | 相关上下文 | 动态相关信息 |
+| **MemoryContext**              | 用户记忆     | 长期记忆存储     |
+| **SystemPromptContext**        | 系统提示词   | 定义 AI 行为     |
+| **StructuredOutputContext**    | 结构化输出   | JSON 格式化输出  |
+| **RelevantContext**            | 相关上下文   | 动态相关信息     |
 
 ### 3. 工具系统
 
 可扩展的工具调用框架：
 
 **内置工具:**
+
 - **ReadFileTool** - 读取文件内容
 - **ListFilesTool** - 列出目录文件
 
 **工具定义规范:**
+
 - 标准化的工具接口
 - JSON Schema 参数定义
 - 权限控制和并发安全
@@ -196,6 +201,7 @@ my-ai-app/
 > **优势**: 随着模型能力提升，应用效果自动提升；同时充分发挥开发者的创造力
 
 **核心思想:**
+
 1. **LLM 是核心** - 保证核心是 LLM，随着模型能力提升，Agent 效果自动变好
 2. **开发重心是上下文** - 极大发挥应用开发者的能力和创造力
 3. **统一上下文管理** - 将所有上下文统一管理，LLM 直接与上下文交互
@@ -207,31 +213,31 @@ my-ai-app/
 ### 简单对话
 
 ```typescript
-import { createLLMService } from './core/llm/index.js';
-import { loadEnv } from './config/env.js';
+import { createLLMService } from "./core/llm/index.js";
+import { loadEnv } from "./config/env.js";
 
 loadEnv();
 
 const service = await createLLMService({
-  provider: 'deepseek',
-  model: 'deepseek-chat',
+  provider: "deepseek",
+  model: "deepseek-chat",
   apiKey: process.env.DEEPSEEK_API_KEY,
 });
 
 const response = await service.simpleChat(
-  'Hello! Can you introduce yourself?',
-  'You are a helpful AI assistant.'
+  "Hello! Can you introduce yourself?",
+  "You are a helpful AI assistant."
 );
 
-console.log('Assistant:', response);
+console.log("Assistant:", response);
 ```
 
 ### 工具调用
 
 ```typescript
-import { createLLMService } from './core/llm/index.js';
-import { ContextManager } from './core/context/index.js';
-import { ToolManager } from './core/tool/index.js';
+import { createLLMService } from "./core/llm/index.js";
+import { ContextManager } from "./core/context/index.js";
+import { ToolManager } from "./core/tool/index.js";
 
 // 初始化上下文和工具
 const contextManager = new ContextManager();
@@ -240,15 +246,18 @@ await contextManager.init();
 const toolManager = new ToolManager();
 
 // 创建 LLM 服务
-const service = await createLLMService({
-  provider: 'deepseek',
-  model: 'deepseek-chat',
-  apiKey: process.env.DEEPSEEK_API_KEY,
-}, toolManager);
+const service = await createLLMService(
+  {
+    provider: "deepseek",
+    model: "deepseek-chat",
+    apiKey: process.env.DEEPSEEK_API_KEY,
+  },
+  toolManager
+);
 
 // 使用 generate 方法自动处理工具调用
 const answer = await service.generate(
-  '请帮我读取 package.json 文件，并告诉我项目名称是什么'
+  "请帮我读取 package.json 文件，并告诉我项目名称是什么"
 );
 
 console.log(answer);
@@ -307,6 +316,7 @@ npm publish
 ## 🗺️ 路线图
 
 ### v1.0 - 核心功能 ✅
+
 - [x] CLI 交互界面
 - [x] 多包管理器支持
 - [x] 项目模板生成
@@ -315,12 +325,14 @@ npm publish
 - [x] 架构文档集成
 
 ### v1.1 - 增强功能 🚧
+
 - [ ] 模板类型选择（full/minimal）
 - [ ] 更多 LLM 提供商模板
 - [ ] 更详细的进度提示
 - [ ] 错误恢复机制
 
 ### v2.0 - 扩展功能 🔮
+
 - [ ] Web 服务器集成（Hono/Koa/Express）
 - [ ] 插件系统
 - [ ] 项目模板市场
