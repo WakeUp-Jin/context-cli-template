@@ -1,0 +1,50 @@
+{
+  "name": "context-cli",
+  "version": "1.0.0",
+  "description": "CLI tool to scaffold context-template-cli projects",
+  "type": "module",
+  "bin": {
+    "context-cli": "./dist/index.js",
+    "create-context-app": "./dist/index.js"
+  },
+  "files": [
+    "bin",
+    "dist",
+    "template"
+  ],
+  "scripts": {
+    "dev": "tsx src/index.ts",
+    "build": "tsc && chmod +x dist/index.js",
+    "prepublishOnly": "npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@clack/prompts": "^0.11.0",
+    "fs-extra": "^11.2.0",
+    "execa": "^9.5.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.1",
+    "@types/fs-extra": "^11.0.4",
+    "typescript": "^5.7.2",
+    "tsx": "^4.19.2"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "keywords": [
+    "cli",
+    "scaffold",
+    "llm",
+    "ai",
+    "deepseek",
+    "context",
+    "template"
+  ],
+  "author": "",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/context-cli.git"
+  }
+}

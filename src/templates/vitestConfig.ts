@@ -1,0 +1,25 @@
+/**
+ * vitest.config.ts 生成器
+ */
+
+export function generateVitestConfig(): string {
+  return `import { defineConfig } from 'vitest/config';
+
+export default defineConfig({
+  test: {
+    globals: true,
+    environment: 'node',
+    include: ['**/__tests__/**/*.test.ts'],
+    coverage: {
+      provider: 'v8',
+      reporter: ['text', 'json', 'html'],
+      exclude: [
+        'node_modules/',
+        'dist/',
+        '**/*.test.ts',
+      ],
+    },
+  },
+});
+`;
+}
