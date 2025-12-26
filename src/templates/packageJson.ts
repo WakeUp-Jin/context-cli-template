@@ -12,8 +12,8 @@ export function generatePackageJson(config: ProjectConfig): object {
     main: 'dist/index.js',
     scripts: {
       // 开发脚本
-      dev: 'tsx watch examples/simple-chat.ts',
-      'dev:multi-chat': 'tsx watch examples/multi-chat.ts',
+      dev: 'tsx watch src/examples/simple-chat.ts',
+      'dev:multi-chat': 'tsx watch src/examples/multi-chat.ts',
 
       // 构建脚本
       build: 'tsc',
@@ -25,7 +25,7 @@ export function generatePackageJson(config: ProjectConfig): object {
       'test:ui': 'vitest --ui',
 
       // 评估脚本
-      eval: 'tsx evaluationTemplate/example.ts',
+      eval: 'tsx src/evaluation/example.ts',
 
       // 清理脚本
       clean: 'rm -rf dist',

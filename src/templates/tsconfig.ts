@@ -12,7 +12,7 @@ export function generateTsConfig(): object {
 
       // 输出配置
       outDir: './dist',
-      rootDir: './',
+      rootDir: './src',
 
       // 严格模式
       strict: true,
@@ -37,19 +37,10 @@ export function generateTsConfig(): object {
       // 路径映射 (可选)
       baseUrl: '.',
       paths: {
-        '@/*': ['./*'],
+        '@/*': ['./src/*'],
       },
     },
-    include: [
-      'llm/**/*',
-      'context/**/*',
-      'tool/**/*',
-      'agent/**/*',
-      'evaluationTemplate/**/*',
-      'utils/**/*',
-      'config/**/*',
-      'examples/**/*',
-    ],
+    include: ['src/**/*'],
     exclude: ['node_modules', 'dist', '**/*.test.ts'],
   };
 }

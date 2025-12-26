@@ -120,7 +120,7 @@ export function loadEnv() {
   // 获取当前文件所在目录
   const __filename = fileURLToPath(import.meta.url);
   const __dirname = dirname(__filename);
-  const projectRoot = resolve(__dirname, "..");
+  const projectRoot = resolve(__dirname, "../..");
 
   // 加载环境变量文件（按优先级）
   const nodeEnv = process.env.NODE_ENV || "development";

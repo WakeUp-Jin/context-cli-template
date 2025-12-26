@@ -29,22 +29,29 @@ export async function copyTemplateFiles(config: ProjectConfig): Promise<void> {
   const templateDir = path.join(__dirname, '../../template');
   const targetDir = path.join(process.cwd(), config.projectName);
 
-  // 要复制的目录列表
-  const dirs = ['core', 'docs','evaluation', 'utils', 'config', 'examples'];
+  // 复制 src 目录（包含所有源代码）
+  const srcPath = path.join(templateDir, 'src');
+  const srcDest = path.join(targetDir, 'src');
+  if (await fs.pathExists(srcPath)) {
+    await fs.copy(srcPath, srcDest, {
+      filter: (src) => {
+        const basename = path.basename(src);
+        // 过滤掉 .DS_Store 等系统文件
+        return !basename.startsWith('.') || basename === '.gitignore';
+      },
+    });
+  }
 
-  for (const dir of dirs) {
-    const srcPath = path.join(templateDir, dir);
-    const destPath = path.join(targetDir, dir);
-
-    if (await fs.pathExists(srcPath)) {
-      await fs.copy(srcPath, destPath, {
-        filter: (src) => {
-          const basename = path.basename(src);
-          // 过滤掉 .DS_Store 等系统文件
-          return !basename.startsWith('.') || basename === '.gitignore';
-        },
-      });
-    }
+  // 单独复制 docs 目录（保留在根目录）
+  const docsPath = path.join(templateDir, 'docs');
+  const docsDest = path.join(targetDir, 'docs');
+  if (await fs.pathExists(docsPath)) {
+    await fs.copy(docsPath, docsDest, {
+      filter: (src) => {
+        const basename = path.basename(src);
+        return !basename.startsWith('.') || basename === '.gitignore';
+      },
+    });
   }
 
   // 复制 .env.example

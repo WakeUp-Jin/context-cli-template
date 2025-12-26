@@ -1,6 +1,6 @@
 {
   "name": "create-context-template",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "CLI tool to scaffold LLM projects with context engineering architecture",
   "type": "module",
   "bin": {

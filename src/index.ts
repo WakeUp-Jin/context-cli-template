@@ -79,16 +79,17 @@ cp .env.example .env
 
 \`\`\`
 .
-├── core/                   # 核心系统模块
-│   ├── llm/               # LLM 服务层(多模型支持)
-│   ├── context/           # 上下文管理系统
-│   ├── tool/              # 工具管理系统
-│   ├── agent/             # Agent 编排(预留)
-│   └── promptManager/     # 提示词管理
-├── evaluation/            # 测试与评估
-├── utils/                 # 工具函数(日志等)
-├── config/                # 配置(环境变量加载)
-├── examples/              # 使用示例
+├── src/                   # 源代码目录
+│   ├── config/            # 配置(环境变量加载)
+│   ├── utils/             # 工具函数(日志等)
+│   ├── core/              # 核心系统模块
+│   │   ├── llm/           # LLM 服务层(多模型支持)
+│   │   ├── context/       # 上下文管理系统
+│   │   ├── tool/          # 工具管理系统
+│   │   ├── agent/         # Agent 编排
+│   │   └── promptManager/ # 提示词管理
+│   ├── evaluation/        # 测试与评估
+│   └── examples/          # 使用示例
 └── docs/                  # 项目文档
     └── ARCHITECTURE.md    # 架构设计文档(必读!)
 \`\`\`
