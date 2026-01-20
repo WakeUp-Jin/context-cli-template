@@ -180,7 +180,7 @@ async function main() {
 Next steps:
 ${nextSteps}
 
-Documentation: https://github.com/yourusername/context-template-cli`);
+Documentation: https://github.com/WakeUp-Jin/context-cli-template`);
   } catch (error: any) {
     p.cancel(`Error: ${error.message}`);
     process.exit(1);
